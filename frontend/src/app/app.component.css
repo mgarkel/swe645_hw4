@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+body{
+	background: gray;
+} 
+
+.container{
+	margin-left:10%;
+}
+
+h1{
+	color: blue;
+	border: 5px blue solid;
+}
+
+#form{
+	border: 5px pink dotted;
+	display: inline-block;
+}
+
+#form label{
+	color: green;
+}
+
+

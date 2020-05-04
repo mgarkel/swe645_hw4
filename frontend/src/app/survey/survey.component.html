@@ -1,0 +1,99 @@
+<body>
+    <div style="text-align:center;border:1px solid red;">
+<form #student = "ngForm" ngNativeValidate (ngSubmit) = "onClickSubmit(student)">
+        
+        <div>
+            <label for="FirstName">First:</label>
+            <input name = "FirstName" ngModel required type="text" placeholder="First Name">
+        </div>
+
+        <div>
+            <label for="LastName">Last:</label>
+            <input name = "LastName" type="text" placeholder="Last Name" required ngModel>
+        </div>
+
+        <div>
+            <label for="StreetAddress">Address:</label>
+            <input name = "StreetAddress" type="text" placeholder="Street Address" required ngModel>
+        </div>
+
+        <div>
+            <label for="City">City:</label>
+            <input name = "City" type="text" placeholder="City" required ngModel>
+        </div>
+
+        <div>
+            <label for="State">State:</label>
+            <input name = "State" type="text" placeholder="State" required ngModel>
+        </div>
+        
+        <div>
+            <label for="Zip">Zip:</label>
+            <input name = "Zip" type="number" placeholder="Zip" required ngModel>
+        </div>
+
+        <div>
+            <label for="Tel">Tel:</label>
+            <input name = "Tel" type="number" placeholder="Tel" required ngModel>
+        </div>
+
+        <div>
+            <label for="Email">Email:</label>
+            <input name = "Email" type="text" placeholder="Email" required ngModel>
+        </div>
+
+        <div>
+            <label for="Date">Date:</label>
+            <input name = "Date" type="date" placeholder="Date" required ngModel>
+        </div>
+        
+        <h3>Please specify something you like about GMU Campus</h3>
+        <label for="students">Students</label>
+        <input name = "students" type = "checkbox" ngModel value = "campus">
+        
+        <label for="location">Location</label>
+        <input name = "location" type = "checkbox" ngModel value = "location">
+        
+        <label for="campus">Campus</label>
+        <input name = "campus" type = "checkbox" ngModel value = "campus">
+        
+        <label for="atmosphere">Atmosphere</label>
+        <input name = "atmosphere" type = "checkbox" ngModel value = "atmosphere">
+        
+        <label for="dormrooms">Dorm Rooms</label>
+        <input name = "dorms" type = "checkbox" ngModel value="dormrooms">
+        
+        <label for="sports">Sports</label>
+        <input name = "sports" type = "checkbox" ngModel value="sports">
+        
+        <h3>Please specify how you became interested in the University</h3>
+        <label for="friends">Friends</label>
+        <input name = "interested" type = "radio" ngModel value = "friends">
+        
+        <label for="television">Television</label>
+        <input name = "interested" type = "radio" ngModel value = "television">
+        
+        <label for="internet">Internet</label>
+        <input name = "interested" type = "radio" ngModel value = "internet">
+        
+        <label for="other">Other</label>
+        <input name = "interested" type = "radio" ngModel value = "other">
+        
+        <div>
+            <label for="refer">How likely are you to refer a friend to GMU</label>
+            <select name="refer" ngModel>
+              <option value="vlikely">Very Likely</option>
+              <option value="likely">Likely</option>
+              <option value="ulikely">Unlikely</option>
+            </select>
+        </div>
+        
+        <div>
+            <button mat-raised-button color="primary">Submit</button>
+        </div>
+        <div>
+        <input type="reset" value="Reset" />
+    </div>
+</form>
+    </div>
+</body>
