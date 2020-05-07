@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {SubmitService} from '../submit.service';
 import { HttpClient } from '@angular/common/http'
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-survey',
@@ -18,6 +19,7 @@ export class SurveyComponent implements OnInit {
   }
 
   onClickSubmit(form: NgForm){
+    const myId = uuid.v4();
     var checkbox = ""; //our value for the checkbox elements
     var radio = 0; //our value for the radio button elements
     var dropdown = 0; //our value for the dropdown elements
@@ -33,7 +35,7 @@ export class SurveyComponent implements OnInit {
     if(form.value.atmosphere == true){
       checkbox = checkbox.concat("3, ");
     }
-    if(form.value.dormrooms == true){
+    if(form.value.dorms == true){
       checkbox =  checkbox.concat("4, ");
     }
     if(form.value.sports == true){
@@ -76,8 +78,26 @@ export class SurveyComponent implements OnInit {
     formData.append('radio', radio.toString());
     formData.append('dropdown', dropdown.toString());
 
+
+    var surveyJson = 
+    {
+        "firstname": form.value.FirstName,
+        "lastname": form.value.LastName,
+        "streetaddress":form.value.StreetAddress,
+        "city":form.value.City,
+        "state":form.value.State,
+        "zip":form.value.Zip.toString(),
+        "phone":form.value.Tel.toString(),
+        "email":form.value.Email,
+        "date_survey": form.value.Date.toString(),
+        "checkbox":checkbox,
+        "radio":radio.toString(),
+        "dropdown":dropdown.toString(),
+        "id": myId.toString()
+    };
+    console.log(surveyJson)
     //we post this form data to our API
-    this.http.post<any>("http://a81486151835411eaad1006ffc916681-163898015.us-east-2.elb.amazonaws.com:5000/",formData).subscribe(
+    this.http.post<any>("https://uimyhu9z82.execute-api.us-east-1.amazonaws.com/api-v2/students/%7B" + myId.toString() + "%7D",surveyJson).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     );

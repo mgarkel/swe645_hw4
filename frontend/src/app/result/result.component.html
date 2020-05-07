@@ -2,17 +2,17 @@
 <button (click) = "httpget()">Get Results</button>
 
 <div *ngFor = "let entry of result">
-  <h5><b>First name:</b>  {{ entry[1] }}, 
-    <b>Last Name:</b>  {{ entry[2] }}, 
-    <b>Street Address:</b>  {{ entry[3] }},
-    <b>City:</b>  {{ entry[4] }},
-    <b>State:</b>  {{ entry[5] }},
-    <b>Zip Code:</b>  {{ entry[6] }},
-    <b>Phone:</b>  {{ entry[7] }}, 
-    <b>Email:</b>  {{ entry[8] }},
-    <b>Date:</b>  {{ entry[9] }}, 
-    <b>Liked:</b>  {{ entry[10] }}, 
-    <b>Interested by:</b>  {{ entry[11] }}, 
-    <b>How Likely to Recommend:</b>  {{ entry[12] }}</h5>
+  <h5><b>First name:</b>  {{ entry["firstname"] }}, 
+    <b>Last Name:</b>  {{ entry["lastname"] }}, 
+    <b>Street Address:</b>  {{ entry["streetaddress"] }},
+    <b>City:</b>  {{ entry["city"] }},
+    <b>State:</b>  {{ entry["state"] }},
+    <b>Zip Code:</b>  {{ entry["zip"] }},
+    <b>Phone:</b>  {{ entry["phone"] }}, 
+    <b>Email:</b>  {{ entry["email"] }},
+    <b>Date:</b>  {{ entry["date_survey"] }}, 
+    <b>Liked:</b>  {{ entry["checkbox"] }}, 
+    <b>Interested by:</b>  {{ entry["radio"] }}, 
+    <b>How Likely to Recommend:</b>  {{ entry["dropdown"] }}</h5>
 </div>
 </body>

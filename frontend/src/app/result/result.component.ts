@@ -20,12 +20,13 @@ export class ResultComponent implements OnInit {
   //this method is triggered when the get results button is pushed on the result html
   httpget(){
     //we get the surveys from our API
-    this.http.get("https://o7xbmrrh35.execute-api.us-east-1.amazonaws.com/api-v1/get-student").subscribe((data) => {
+    this.http.get("https://uimyhu9z82.execute-api.us-east-1.amazonaws.com/api-v2/students").subscribe((data) => {
       Object.values(data).forEach(value => {
-        if(value[10]){
+        console.log(value["checkbox"])
+        if(value["checkbox"]){
           //for the checkbox entry we tokenize and parse the string
           var checkbox = "";
-          var tokenized = value[10].split(", ")
+          var tokenized = value["checkbox"].split(", ")
           tokenized.forEach(element => {
             //for each token we replace it with the corresponding value
             if(element == "0")
@@ -41,29 +42,30 @@ export class ResultComponent implements OnInit {
             if(element == "5")
             checkbox = checkbox.concat("Sports, ")
           });
-          value[10] = checkbox
+          value["checkbox"] = checkbox
         }
         //we replace the radio variable based on the integer that's returned
-        if(value[11] == 0)
-        value[11] = "Friends"
-        if(value[11] == 1)
-        value[11] = "Television"
-        if(value[11] == 2)
-        value[11] = "Internet"
-        if(value[11] == 3)
-        value[11] = "Other"
+        if(value["radio"] == 0)
+        value["radio"] = "Friends"
+        if(value["radio"] == 1)
+        value["radio"] = "Television"
+        if(value["radio"] == 2)
+        value["radio"] = "Internet"
+        if(value["radio"] == 3)
+        value["radio"] = "Other"
         
          //we replace the dropdown variable based on the integer that's returned
-        if(value[12] == 0)
-        value[12] = "Very Likely"
-        if(value[12] == 1)
-        value[12] = "Likely"
-        if(value[12] == 2)
-        value[12] = "Unlikely"
+        if(value["dropdown"] == 0)
+        value["dropdown"] = "Very Likely"
+        if(value["dropdown"] == 1)
+        value["dropdown"] = "Likely"
+        if(value["dropdown"] == 2)
+        value["dropdown"] = "Unlikely"
       });
-      console.log(data)
+      
       //we put all of the data into the result variable because that is the one the html is using
       this.result = data
+      //console.log(this.result)
   });
 }
 }

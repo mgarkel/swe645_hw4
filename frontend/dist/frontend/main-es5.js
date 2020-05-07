@@ -519,51 +519,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[1], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["firstname"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[2], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["lastname"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[3], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["streetaddress"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[4], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["city"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[5], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["state"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[6], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["zip"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[7], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["phone"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[8], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["email"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[9], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["date_survey"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[10], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["checkbox"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[11], ", ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["radio"], ", ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1[12], "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", entry_r1["dropdown"], "");
       }
     }
 
@@ -584,12 +584,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this = this;
 
           //we get the surveys from our API
-          this.http.get("https://o7xbmrrh35.execute-api.us-east-1.amazonaws.com/api-v1/get-student").subscribe(function (data) {
+          this.http.get("https://uimyhu9z82.execute-api.us-east-1.amazonaws.com/api-v2/students").subscribe(function (data) {
             Object.values(data).forEach(function (value) {
-              if (value[10]) {
+              console.log(value["checkbox"]);
+
+              if (value["checkbox"]) {
                 //for the checkbox entry we tokenize and parse the string
                 var checkbox = "";
-                var tokenized = value[10].split(", ");
+                var tokenized = value["checkbox"].split(", ");
                 tokenized.forEach(function (element) {
                   //for each token we replace it with the corresponding value
                   if (element == "0") checkbox = checkbox.concat("Students, ");
@@ -599,22 +601,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   if (element == "4") checkbox = checkbox.concat("Dorm Rooms, ");
                   if (element == "5") checkbox = checkbox.concat("Sports, ");
                 });
-                value[10] = checkbox;
+                value["checkbox"] = checkbox;
               } //we replace the radio variable based on the integer that's returned
 
 
-              if (value[11] == 0) value[11] = "Friends";
-              if (value[11] == 1) value[11] = "Television";
-              if (value[11] == 2) value[11] = "Internet";
-              if (value[11] == 3) value[11] = "Other"; //we replace the dropdown variable based on the integer that's returned
+              if (value["radio"] == 0) value["radio"] = "Friends";
+              if (value["radio"] == 1) value["radio"] = "Television";
+              if (value["radio"] == 2) value["radio"] = "Internet";
+              if (value["radio"] == 3) value["radio"] = "Other"; //we replace the dropdown variable based on the integer that's returned
 
-              if (value[12] == 0) value[12] = "Very Likely";
-              if (value[12] == 1) value[12] = "Likely";
-              if (value[12] == 2) value[12] = "Unlikely";
-            });
-            console.log(data); //we put all of the data into the result variable because that is the one the html is using
+              if (value["dropdown"] == 0) value["dropdown"] = "Very Likely";
+              if (value["dropdown"] == 1) value["dropdown"] = "Likely";
+              if (value["dropdown"] == 2) value["dropdown"] = "Unlikely";
+            }); //we put all of the data into the result variable because that is the one the html is using
 
-            _this.result = data;
+            _this.result = data; //console.log(this.result)
           });
         }
       }]);
@@ -785,19 +786,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _submit_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var uuid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! uuid */
+    "./node_modules/uuid/index.js");
+    /* harmony import */
+
+
+    var uuid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_1__);
+    /* harmony import */
+
+
+    var _submit_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../submit.service */
     "./src/app/submit.service.ts");
     /* harmony import */
 
 
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
     /* harmony import */
 
 
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 
@@ -815,6 +826,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onClickSubmit",
         value: function onClickSubmit(form) {
+          var myId = uuid__WEBPACK_IMPORTED_MODULE_1__["v4"]();
           var checkbox = ""; //our value for the checkbox elements
 
           var radio = 0; //our value for the radio button elements
@@ -838,7 +850,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             checkbox = checkbox.concat("3, ");
           }
 
-          if (form.value.dormrooms == true) {
+          if (form.value.dorms == true) {
             checkbox = checkbox.concat("4, ");
           }
 
@@ -889,9 +901,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           formData.append('date_survey', form.value.Date);
           formData.append('checkbox', checkbox);
           formData.append('radio', radio.toString());
-          formData.append('dropdown', dropdown.toString()); //we post this form data to our API
+          formData.append('dropdown', dropdown.toString());
+          var surveyJson = {
+            "firstname": form.value.FirstName,
+            "lastname": form.value.LastName,
+            "streetaddress": form.value.StreetAddress,
+            "city": form.value.City,
+            "state": form.value.State,
+            "zip": form.value.Zip.toString(),
+            "phone": form.value.Tel.toString(),
+            "email": form.value.Email,
+            "date_survey": form.value.Date.toString(),
+            "checkbox": checkbox,
+            "radio": radio.toString(),
+            "dropdown": dropdown.toString(),
+            "id": myId.toString()
+          };
+          console.log(surveyJson); //we post this form data to our API
 
-          this.http.post("http://a81486151835411eaad1006ffc916681-163898015.us-east-2.elb.amazonaws.com:5000/", formData).subscribe(function (response) {
+          this.http.post("https://uimyhu9z82.execute-api.us-east-1.amazonaws.com/api-v2/students/%7B" + myId.toString() + "%7D", surveyJson).subscribe(function (response) {
             return console.log(response);
           }, function (error) {
             return console.log(error);
@@ -904,7 +932,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     SurveyComponent.ɵfac = function SurveyComponent_Factory(t) {
-      return new (t || SurveyComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_submit_service__WEBPACK_IMPORTED_MODULE_1__["SubmitService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]));
+      return new (t || SurveyComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_submit_service__WEBPACK_IMPORTED_MODULE_2__["SubmitService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]));
     };
 
     SurveyComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -1186,7 +1214,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
       },
-      directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"]],
+      directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ɵangular_packages_forms_forms_x"]],
       styles: ["@charset \"UTF-8\";\r\n\r\nbody[_ngcontent-%COMP%]{\r\n\tbackground: gray;\r\n}\r\n\r\n.container[_ngcontent-%COMP%]{\r\n\tmargin-left:10%;\r\n}\r\n\r\nh1[_ngcontent-%COMP%]{\r\n\tcolor: blue;\r\n\tborder: 5px blue solid;\r\n}\r\n\r\n#form[_ngcontent-%COMP%]{\r\n\tborder: 5px pink dotted;\r\n\tdisplay: inline-block;\r\n}\r\n\r\n#form[_ngcontent-%COMP%]   label[_ngcontent-%COMP%]{\r\n\tcolor: green;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3VydmV5L3N1cnZleS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGdCQUFnQjs7QUFFaEI7Q0FDQyxnQkFBZ0I7QUFDakI7O0FBRUE7Q0FDQyxlQUFlO0FBQ2hCOztBQUVBO0NBQ0MsV0FBVztDQUNYLHNCQUFzQjtBQUN2Qjs7QUFFQTtDQUNDLHVCQUF1QjtDQUN2QixxQkFBcUI7QUFDdEI7O0FBRUE7Q0FDQyxZQUFZO0FBQ2IiLCJmaWxlIjoic3JjL2FwcC9zdXJ2ZXkvc3VydmV5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAY2hhcnNldCBcIlVURi04XCI7XHJcblxyXG5ib2R5e1xyXG5cdGJhY2tncm91bmQ6IGdyYXk7XHJcbn0gXHJcblxyXG4uY29udGFpbmVye1xyXG5cdG1hcmdpbi1sZWZ0OjEwJTtcclxufVxyXG5cclxuaDF7XHJcblx0Y29sb3I6IGJsdWU7XHJcblx0Ym9yZGVyOiA1cHggYmx1ZSBzb2xpZDtcclxufVxyXG5cclxuI2Zvcm17XHJcblx0Ym9yZGVyOiA1cHggcGluayBkb3R0ZWQ7XHJcblx0ZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG59XHJcblxyXG4jZm9ybSBsYWJlbHtcclxuXHRjb2xvcjogZ3JlZW47XHJcbn1cclxuXHJcblxyXG4iXX0= */"]
     });
     /*@__PURE__*/
@@ -1201,9 +1229,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }], function () {
         return [{
-          type: _submit_service__WEBPACK_IMPORTED_MODULE_1__["SubmitService"]
+          type: _submit_service__WEBPACK_IMPORTED_MODULE_2__["SubmitService"]
         }, {
-          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]
         }];
       }, null);
     })();
