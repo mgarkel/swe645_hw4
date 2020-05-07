@@ -584,7 +584,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this = this;
 
           //we get the surveys from our API
-          this.http.get("http://a81486151835411eaad1006ffc916681-163898015.us-east-2.elb.amazonaws.com:5000/").subscribe(function (data) {
+          this.http.get("https://o7xbmrrh35.execute-api.us-east-1.amazonaws.com/api-v1/get-student").subscribe(function (data) {
             Object.values(data).forEach(function (value) {
               if (value[10]) {
                 //for the checkbox entry we tokenize and parse the string
@@ -1309,7 +1309,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Users\Lenovo\Documents\GitHub\swe_645_hw3\frontend\src\main.ts */
+    /*! C:\Users\Lenovo\Documents\GitHub\swe645_hw4\frontend\src\main.ts */
     "./src/main.ts");
     /***/
   }
